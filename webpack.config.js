@@ -35,7 +35,13 @@ const standardConfig = {
       }, {
           test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
           loader: 'file-loader'
+      }, {
+          test: /\.html$/,
+          loader: 'html-loader'
       }],
+  },
+  resolve:{
+      extensions: [".js", ".json"]
   },
   devServer: {
     port: 8000,
@@ -46,8 +52,8 @@ const standardConfig = {
     new ExtractTextPlugin("styles.css"),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      hash:true,
-      inject: true
+      // hash:true,
+      // inject: true
     }),
     new webpack.optimize.UglifyJsPlugin({
       include: /\.min\.js$/,

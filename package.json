@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "build": "npm run clean && webpack",
-    "clean":"rimraf ./dist"
+    "clean": "rimraf ./dist"
   },
   "author": "supernever",
   "dependencies": {
