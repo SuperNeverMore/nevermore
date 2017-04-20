@@ -12,6 +12,7 @@
 webpack
 bootstrap@3
 knockoutjs
+es6
 ```
 
 
