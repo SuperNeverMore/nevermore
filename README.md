@@ -1,5 +1,5 @@
 # nevermore
-作为`super heros`版本的起始。
+作为`super heroes`版本的起始。
 
 目的：
 ```bash
