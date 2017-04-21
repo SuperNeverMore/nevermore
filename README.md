@@ -24,7 +24,7 @@ yarn
 运行项目：
 
 ```bash
-yarn run dev
+yarn start
 ```
 
 产出：

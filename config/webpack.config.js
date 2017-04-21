@@ -8,15 +8,22 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const standardConfig = {
   devtool: 'source-map',
-  entry: './src/index.js',
+  entry: [
+      'webpack/hot/only-dev-server',
+      // // 为热替换(HMR)打包好代码
+      // // only- 意味着只有成功更新运行代码才会执行热替换(HMR)
+      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+      './index.js'
+  ],
   output: {
       filename: '[name].bundle.js',
       // 输出的打包文件
 
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, '../dist'),
 
       publicPath: '/'
   },
+  context: path.resolve(__dirname, '../src'),
   module: {
       noParse: /node_modules\/knockout\/build\/output\/*.js/,
       rules: [{
@@ -41,17 +48,25 @@ const standardConfig = {
       }],
   },
   resolve:{
-      extensions: [".js", ".json"]
+      extensions: [".js", ".json"],
+      alias: {
+          $: path.resolve(__dirname, './node_modules/jquery/dist/jquery.js')
+
+      }
   },
-  devServer: {
-    port: 8000,
-    contentBase: 'src/',
-    inline: true
-  },
+    devServer: {
+        hot: true, // 开启服务器的模块热替换(HMR)
+
+        contentBase: path.resolve(__dirname, '../dist'),
+
+        publicPath: '/' // 和上文 output 的“publicPath”值保持一致
+    },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
     new ExtractTextPlugin("styles.css"),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'index.html',
       // hash:true,
       // inject: true
     }),
