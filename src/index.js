@@ -7,7 +7,7 @@ let obj = {
   data:new TestButton({
       evt:function(){alert("hello")},
       className:'btn btn-danger',
-      name:'hello world'
+      name:'hello world..'
   })
 };
 
@@ -15,7 +15,7 @@ let obj1 = {
     data1:new TestButton({
         evt:function(){alert("hello1")},
         className:'btn btn-info',
-        name:'测试按钮'
+        name:'测试按钮...'
     })
 };
 
@@ -25,7 +25,6 @@ let obj1 = {
 
 let data = new ViewModel();
 let viewModel = data.addData([obj,obj1]);
-
 ko.applyBindings(viewModel,document.querySelector('#app'));
 
 if(module.hot) {
