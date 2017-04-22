@@ -1,12 +1,11 @@
 class viewModel{
     constructor(){
         this.viewModel = {};
+        this.addData = this.addData.bind(this);
     }
     addData(props){
-        for(let i of props){
-            Object.assign(this.viewModel,i);
-        }
-        return this.viewModel
+        Object.assign(this.viewModel,props);
     }
+
 }
 export default viewModel;

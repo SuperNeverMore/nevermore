@@ -1,36 +1,28 @@
 import './less/main.less';
 import ko from 'knockout';
 import TestButton from './components/button/button';
-import ViewModel from './components/viewModel/viewModel';
+import Tools from './lib/tools';
 
-let obj = {
-  data:new TestButton({
-      evt:function(){alert("hello")},
-      className:'btn btn-danger',
-      name:'hello world..'
-  })
-};
+let obj = new Map(),
+    tool = new Tools();
 
-let obj1 = {
-    data1:new TestButton({
-        evt:function(){alert("hello1")},
-        className:'btn btn-info',
-        name:'测试按钮...'
-    })
-};
+obj.set("data",new TestButton().init({
+    evt:function(){alert("hello")},
+    className:'btn btn-danger',
+    name:'hello world'
+}))
+.set("data1",new TestButton().init({
+    evt:function(){alert("hello1")},
+    className:'btn btn-info',
+    name:'测试按钮'
+}));
 
-
-
-
-
-let data = new ViewModel();
-let viewModel = data.addData([obj,obj1]);
-ko.applyBindings(viewModel,document.querySelector('#app'));
+ko.applyBindings(tool.strMapToObj(obj),document.querySelector('#app'));
 
 if(module.hot) {
     ko.cleanNode(document.querySelector('#app'));
     module.hot.accept();
-    ko.applyBindings(viewModel,document.querySelector('#app'));
+    ko.applyBindings(tool.strMapToObj(obj),document.querySelector('#app'));
     module.hot.dispose(function() {
         ko.cleanNode(document.querySelector('#app'));
     });

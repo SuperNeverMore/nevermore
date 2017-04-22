@@ -1,10 +1,13 @@
 import ko from 'knockout';
-class ButtonModel {
+import ViewModel from '../viewModel/viewModel';
+class ButtonModel extends ViewModel {
     constructor(params){
-        var param = params;
-        this.evt = param.evt||'';
-        this.className = param.className||'btn btn-info';
-        this.name = param.name||'无名大神';
+        super(params);
+        this.init = this.init.bind(this);
+    }
+    init(params){
+        this.addData(params);
+        return this.viewModel;
     }
 }
 
