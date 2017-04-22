@@ -1,7 +1,7 @@
 {
   "name": "knockout_webpack_es6",
   "version": "1.0.0",
-  "description": "",
+  "description": "基于knockout的应用框架",
   "main": "src/index.js",
   "scripts": {
     "start": "node ./server/server.js",
