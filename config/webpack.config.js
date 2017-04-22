@@ -10,8 +10,6 @@ const standardConfig = {
   devtool: 'source-map',
   entry: [
       'webpack/hot/only-dev-server',
-      // // 为热替换(HMR)打包好代码
-      // // only- 意味着只有成功更新运行代码才会执行热替换(HMR)
       'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
       './index.js'
   ],

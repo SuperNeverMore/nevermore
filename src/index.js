@@ -1,21 +1,37 @@
 import './less/main.less';
 import ko from 'knockout';
 import TestButton from './components/button/button';
-var obj = {
+import ViewModel from './components/viewModel/viewModel';
+
+let obj = {
   data:new TestButton({
       evt:function(){alert("hello")},
-      className:'btn btn-warning',
-      name:'Hello World!!.'
+      className:'btn btn-danger',
+      name:'hello world'
   })
 };
 
+let obj1 = {
+    data1:new TestButton({
+        evt:function(){alert("hello1")},
+        className:'btn btn-info',
+        name:'测试按钮'
+    })
+};
 
-ko.applyBindings(obj,document.querySelector('#app'));
+
+
+
+
+let data = new ViewModel();
+let viewModel = data.addData([obj,obj1]);
+
+ko.applyBindings(viewModel,document.querySelector('#app'));
 
 if(module.hot) {
     ko.cleanNode(document.querySelector('#app'));
     module.hot.accept();
-    ko.applyBindings(obj,document.querySelector('#app'));
+    ko.applyBindings(viewModel,document.querySelector('#app'));
     module.hot.dispose(function() {
         ko.cleanNode(document.querySelector('#app'));
     });

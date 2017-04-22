@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./server/server.js",
     "dev": "node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "build": "npm run clean && webpack",
+    "build": "npm run clean && webpack --config ./config/webpack.config.js --progress",
     "clean": "rimraf ./dist"
   },
   "author": "supernever",
