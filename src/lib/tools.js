@@ -13,6 +13,7 @@ class Tools{
         }
         return obj;
     }
+    
 }
 
 export default Tools;

@@ -3,19 +3,29 @@ import ko from 'knockout';
 import TestButton from './components/button/button';
 import Tools from './lib/tools';
 
-let obj = new Map(),
-    tool = new Tools();
+/**********route-start**************/
+// var route = new Route();
+// var routeMap = new Map();
+// routeMap.set("/",function(res){
+//     document.querySelector("#app").innerHTML=`
+//         <btn-nm params="value:data"></btn-nm>
+//         <btn-nm params="value:data1"></btn-nm>`;
+// })
+// .set("/hh",function(res){
+//     document.querySelector("#app").innerHTML=`<h1>hello hh </h1>`;
+// });
+// route.addRoute(routeArr);
+//
+// route.start();
+/**********route-end**************/
 
-obj.set("data",new TestButton().init({
-    evt:function(){alert("hello")},
-    className:'btn btn-danger',
-    name:'hello world'
-}))
-.set("data1",new TestButton().init({
-    evt:function(){alert("hello1")},
-    className:'btn btn-info',
-    name:'测试按钮'
-}));
+/*设置demo路由和model区域*/
+import BtnDemo from './examples/Button/index';
+let Btn = new BtnDemo();
+let obj = Btn.setModel();
+let tool = new Tools();
+Btn.setRoute();
+/*设置demo路由和model区域*/
 
 ko.applyBindings(tool.strMapToObj(obj),document.querySelector('#app'));
 
